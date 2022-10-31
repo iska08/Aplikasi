@@ -22,10 +22,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
-    // Cabang
+    // Assets
+    Route::delete('assets/destroy', 'AssetsController@massDestroy')->name('assets.massDestroy');
+    Route::resource('assets', 'AssetsController');
+    // Teams
     Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
     Route::resource('teams', 'TeamController');
     Route::resource('stocks', 'StocksController')->only(['index', 'show']);
+    // Transactions
+    Route::post('transactions/{stock}/storeStock', 'TransactionsController@storeStock')->name('transactions.storeStock');
+    Route::resource('transactions', 'TransactionsController')->only(['index']);
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
