@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             RoleUserTableSeeder::class,
             TeamsTableSeeder::class,
             AssetsTableSeeder::class,
+            PemasukanTableSeeder::class,
+            PengeluaranTableSeeder::class,
         ]);
 
     }

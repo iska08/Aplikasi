@@ -65,6 +65,34 @@
                 </a>
             </li>
             @endcan
+            @can('transaction_management')
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link  nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-cart-arrow-down nav-icon"></i>
+                    Transaksi Manajemen
+                </a>
+                <ul class="nav-dropdown-items">
+                    @can('pemasukan_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pemasukan.index") }}"
+                            class="nav-link {{ request()->is('admin/pemasukan') || request()->is('admin/pemasukan/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-download nav-icon"></i>
+                            Pemasukan
+                        </a>
+                    </li>
+                    @endcan
+                    @can('pengeluaran_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.pengeluaran.index") }}"
+                            class="nav-link {{ request()->is('admin/pengeluaran') || request()->is('admin/pengeluaran/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-upload nav-icon"></i>
+                            Pengeluaran
+                        </a>
+                    </li>
+                    @endcan
+                </ul>
+            </li>
+            @endcan
             @can('transaction_access')
             
             @endcan
