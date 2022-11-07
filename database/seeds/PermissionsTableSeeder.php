@@ -156,6 +156,50 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '37',
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => '38',
+                'title' => 'transaction_management',
+            ],
+            [
+                'id'    => '39',
+                'title' => 'pemasukan_create',
+            ],
+            [
+                'id'    => '40',
+                'title' => 'pemasukan_edit',
+            ],
+            [
+                'id'    => '41',
+                'title' => 'pemasukan_show',
+            ],
+            [
+                'id'    => '42',
+                'title' => 'pemasukan_delete',
+            ],
+            [
+                'id'    => '43',
+                'title' => 'pemasukan_access',
+            ],
+            [
+                'id'    => '44',
+                'title' => 'pengeluaran_create',
+            ],
+            [
+                'id'    => '45',
+                'title' => 'pengeluaran_edit',
+            ],
+            [
+                'id'    => '46',
+                'title' => 'pengeluaran_show',
+            ],
+            [
+                'id'    => '47',
+                'title' => 'pengeluaran_delete',
+            ],
+            [
+                'id'    => '48',
+                'title' => 'pengeluaran_access',
+            ],
         ];
 
         Permission::insert($permissions);
