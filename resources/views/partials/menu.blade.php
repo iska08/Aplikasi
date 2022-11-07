@@ -65,6 +65,15 @@
                 </a>
             </li>
             @endcan
+            @can('transaction_access')
+            <li class="nav-item">
+                <a href="{{ route("admin.transactions.index") }}"
+                    class="nav-link {{ request()->is('admin/transactions') || request()->is('admin/transactions/*') ? 'active' : '' }}">
+                    <i class="fa-fw fas fa-history nav-icon"></i>
+                    Riwayat Bahan
+                </a>
+            </li>
+            @endcan
             @can('transaction_management')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle" href="#">
@@ -92,9 +101,6 @@
                     @endcan
                 </ul>
             </li>
-            @endcan
-            @can('transaction_access')
-            
             @endcan
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
