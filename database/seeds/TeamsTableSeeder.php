@@ -18,8 +18,8 @@ class TeamsTableSeeder extends Seeder
         ]);
 
         $karyawan = User::factory()->create([
-            'name'           => "Andi",
-            'email'          => "Andi@gmail.com",
+            'name'           => "User",
+            'email'          => "user@gmail.com",
             'password'       => bcrypt('password'),
             'team_id'        => $team->id,
             'remember_token' => null,
