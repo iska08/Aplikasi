@@ -68,6 +68,11 @@
             @can('transaction_access')
             
             @endcan
+            @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
+            @can('profile_password_edit')
+            
+            @endcan
+            @endif
             <li class="nav-item">
                 <a href="#" class="nav-link"
                     onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
