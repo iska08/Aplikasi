@@ -2,11 +2,7 @@
 
 namespace App\Providers;
 
-use App\Asset;
-use App\Observers\AssetObserver;
-use App\Observers\TeamObserver;
-use App\Team;
-use Illuminate\Support\Facades\Blade;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,7 +14,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('layouts.master', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+        view()->composer('layouts.auth', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+        view()->composer('auth.login', function ($view) {
+            $view->with('setting', Setting::first());
+        });
     }
 
     /**
@@ -28,15 +32,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::if('admin', function () {
-            return auth()->check() && auth()->user()->roles()->where('role_id', 1)->first() != null;
-        });
-
-        Blade::if('user', function () {
-            return auth()->check() && auth()->user()->roles()->where('role_id', 2)->first() != null;
-        });
-
-        Asset::observe(AssetObserver::class);
-        Team::observe(TeamObserver::class);
+        //
     }
 }
