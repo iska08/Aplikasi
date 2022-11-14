@@ -33,7 +33,7 @@
             </li>
             <li>
                 <a href="{{ route('penjualan.index') }}">
-                    <i class="fa fa-download"></i> <span>Pemasukan</span>
+                    <i class="fa fa-download"></i> <span>Daftar Permintaan</span>
                 </a>
             </li>
             <li>

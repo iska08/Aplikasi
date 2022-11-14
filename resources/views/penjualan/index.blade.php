@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Pemasukan
+    Daftar Permintaan
 @endsection
 
 @section('breadcrumb')
     @parent
     <ul>
-        <li class="active">Daftar Pemasukan</li>
+        <li class="active">Daftar Permintaan</li>
     </ul>
 @endsection
 
@@ -37,7 +37,6 @@
 @push('scripts')
 <script>
     let table, table1;
-
     $(function () {
         table = $('.table-penjualan').DataTable({
             responsive: true,
