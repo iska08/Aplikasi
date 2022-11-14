@@ -10,9 +10,7 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-
             @if (auth()->user()->level == 1)
-            <li class="header">MASTER</li>
             <li>
                 <a href="{{ route('kategori.index') }}">
                     <i class="fa fa-cube"></i> <span>Kategori</span>
@@ -28,7 +26,6 @@
                     <i class="fa fa-truck"></i> <span>Pemasok</span>
                 </a>
             </li>
-            <li class="header">TRANSAKSI</li>
             <li>
                 <a href="{{ route('pembelian.index') }}">
                     <i class="fa fa-download"></i> <span>Isi Stok</span>
@@ -39,13 +36,11 @@
                     <i class="fa fa-upload"></i> <span>Pemasukan</span>
                 </a>
             </li>
-            <li class="header">History</li>
             <li>
                 <a href="{{ route('laporan.index') }}">
                     <i class="fa fa-history"></i> <span>Riwayat Transaksi</span>
                 </a>
             </li>
-            <li class="header">SYSTEM</li>
             <li>
                 <a href="{{ route('user.index') }}">
                     <i class="fa fa-users"></i> <span>Admin Cabang</span>
