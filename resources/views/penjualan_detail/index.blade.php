@@ -65,10 +65,7 @@
                         <th width="5%">No</th>
                         <th>Kode</th>
                         <th>Nama</th>
-                        <th>Harga</th>
                         <th width="15%">Jumlah</th>
-                        
-                        <th>Subtotal</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -83,7 +80,7 @@
                             <input type="hidden" name="bayar" id="bayar">
                             <input type="hidden" name="id_member" id="id_member" value="{{ $memberSelected->id_member }}">
 
-                            <div class="form-group row">
+                            <div class="form-group row" hidden>
                                 <label for="totalrp" class="col-lg-2 control-label">Total</label>
                                 <div class="col-lg-8">
                                     <input type="text" id="totalrp" class="form-control" readonly>
@@ -162,10 +159,7 @@
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
                 {data: 'kode_produk'},
                 {data: 'nama_produk'},
-                {data: 'harga_jual'},
                 {data: 'jumlah'},
-                {data: 'diskon'},
-                {data: 'subtotal'},
                 {data: 'aksi', searchable: false, sortable: false},
             ],
             dom: 'Brt',

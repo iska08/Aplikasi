@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('title')
-    Transaksi Penjualan
+    Request Barang
 @endsection
 
 @section('breadcrumb')
     @parent
     <ul>
-        <li class="active">Transaksi Penjualan</li>
+        <li class="active">Request Barang</li>
     </ul>
 @endsection
 
@@ -18,16 +18,16 @@
             <div class="box-body">
                 <div class="alert alert-success alert-dismissible">
                     <i class="fa fa-check icon"></i>
-                    Data Transaksi telah selesai.
+                    Data Request telah selesai.
                 </div>
             </div>
             <div class="box-footer">
-                @if ($setting->tipe_nota == 1)
+                <!--@if ($setting->tipe_nota == 1)
                 <button class="btn btn-warning btn-flat" onclick="notaKecil('{{ route('transaksi.nota_kecil') }}', 'Nota Kecil')">Cetak Ulang Nota</button>
                 @else
                 <button class="btn btn-warning btn-flat" onclick="notaBesar('{{ route('transaksi.nota_besar') }}', 'Nota PDF')">Cetak Ulang Nota</button>
-                @endif
-                <a href="{{ route('transaksi.baru') }}" class="btn btn-primary btn-flat">Transaksi Baru</a>
+                @endif-->
+                <a href="{{ route('transaksi.baru') }}" class="btn btn-primary btn-flat">Request Baru</a>
             </div>
         </div>
     </div>

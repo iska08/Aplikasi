@@ -21,7 +21,6 @@
                         <th width="5%">No</th>
                         <th>Tanggal</th>
                         <th>Total Item</th>
-                        <th>Total Pemasukan</th>
                         <th>Petugas</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
@@ -50,7 +49,6 @@
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
                 {data: 'tanggal'},
                 {data: 'total_item'},
-                {data: 'bayar'},
                 {data: 'kasir'},
                 {data: 'aksi', searchable: false, sortable: false},
             ]
