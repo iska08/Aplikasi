@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Pengeluaran
+    Daftar Pengeluaran Non Bahan
 @endsection
 
 @section('breadcrumb')
     @parent
     <ul>
-        <li class="active">Daftar Pengeluaran</li>
+        <li class="active">Daftar Pengeluaran Non Bahan</li>
     </ul>
 @endsection
 
@@ -23,7 +23,7 @@
                     <thead>
                         <th width="5%">No</th>
                         <th>Tanggal</th>
-                        <th>Deskripsi</th>
+                        <th>Keterangan</th>
                         <th>Nominal</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
