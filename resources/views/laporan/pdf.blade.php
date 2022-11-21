@@ -22,7 +22,8 @@
                 <th width="5%">No</th>
                 <th>Tanggal</th>
                 <th>Pemasukan</th>
-                <th>Pengeluaran</th>
+                <th>Pengeluaran Bahan</th>
+                <th>Pengeluaran Non Bahan</th>
                 <th>Keuntungan</th>
             </tr>
         </thead>
