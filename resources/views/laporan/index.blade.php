@@ -29,8 +29,7 @@
                         <th width="5%">No</th>
                         <th>Tanggal</th>
                         <th>Pemasukan</th>
-                        <th>Pengeluaran Bahan</th>
-                        <th>Pengeluaran Non Bahan</th>
+                        <th>Pengeluaran</th>
                         <th>Keuntungan</th>
                     </thead>
                 </table>
@@ -59,9 +58,8 @@
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
                 {data: 'tanggal'},
-                {data: 'penjualan'},
-                {data: 'pembelian'},
                 {data: 'pengeluaran'},
+                {data: 'pembelian'},
                 {data: 'pendapatan'}
             ],
             dom: 'Brt',

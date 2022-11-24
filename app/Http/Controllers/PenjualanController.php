@@ -37,7 +37,7 @@ class PenjualanController extends Controller
             })
             ->addColumn('kode_member', function ($penjualan) {
                 $member = $penjualan->member->kode_member ?? '';
-                return '<span class="label label-success">'. $member .'</spa>';
+                return '<span class="label label-success">'. $member .'</span>';
             })
             ->editColumn('diskon', function ($penjualan) {
                 return $penjualan->diskon . '%';
@@ -117,7 +117,7 @@ class PenjualanController extends Controller
                 return format_uang($detail->jumlah);
             })
             ->addColumn('subtotal', function ($detail) {
-                return 'Rp. '. format_uang($detail->subtotal);
+                return 'Rp. '. format_uang(($detail->harga_jual)*($detail->jumlah));
             })
             ->rawColumns(['kode_produk'])
             ->make(true);

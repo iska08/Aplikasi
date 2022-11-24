@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Detail Pemasukan</h4>
+                <h4 class="modal-title">Detail Permintaan</h4>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-bordered table-detail">
@@ -14,7 +14,7 @@
                         <th>Nama</th>
                         <th>Harga</th>
                         <th>Jumlah</th>
-                        <th>Subtotal</th>
+                        <th>Tagihan Untuk Admin Cabang</th>
                     </thead>
                 </table>
             </div>
