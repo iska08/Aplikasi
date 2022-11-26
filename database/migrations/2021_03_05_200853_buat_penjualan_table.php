@@ -22,6 +22,7 @@ class BuatPenjualanTable extends Migration
             $table->integer('bayar')->default(0);
             $table->integer('diterima')->default(0);
             $table->integer('id_user');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

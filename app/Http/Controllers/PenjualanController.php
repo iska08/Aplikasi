@@ -45,16 +45,33 @@ class PenjualanController extends Controller
             ->editColumn('kasir', function ($penjualan) {
                 return $penjualan->user->name ?? '';
             })
+            ->editColumn('status', function ($penjualan) {
+                if ($penjualan->status=1) {
+                    return $penjualan->status = 'Barang Belum Dikirim';
+                } else {
+                    return $penjualan->status = 'Barang Telah Dikirim';
+                }
+                
+            })
             ->addColumn('aksi', function ($penjualan) {
                 return '
                 <div class="btn-group">
                     <button onclick="showDetail(`'. route('penjualan.show', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
+                    <button onclick="editForm(`'. route('penjualan.update', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-edit btn-flat"><i class="fa fa-pencil"></i></button>
                     <button onclick="deleteData(`'. route('penjualan.destroy', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
             ->rawColumns(['aksi', 'kode_member'])
             ->make(true);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $penjualan = Penjualan::find($id);
+        $penjualan->update($request->all());
+
+        return response()->json('Data berhasil disimpan', 200);
     }
 
     public function create()
