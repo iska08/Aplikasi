@@ -1,13 +1,14 @@
 @extends('layouts.master')
 
-<!-- Judul Page -->
 @section('title')
-    Transaksi Penjualan
+    Request Barang
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Transaksi Penjualan</li>
+    <ul>
+        <li class="active">Request Barang</li>
+    </ul>
 @endsection
 
 @section('content')
@@ -15,21 +16,18 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-body">
-                <!-- alert selesau -->
                 <div class="alert alert-success alert-dismissible">
                     <i class="fa fa-check icon"></i>
-                    Data Transaksi telah selesai.
+                    Data Request telah selesai.
                 </div>
             </div>
             <div class="box-footer">
-                @if ($setting->tipe_nota == 1)
-                <!-- button cetak nota kecil -->
-                <button class="btn btn-warning btn-flat" onclick="notaKecil('{{ route('transaksi.nota_kecil') }}', 'Nota Kecil')">Cetak Ulang Nota</button>
+                <!--@if ($setting->tipe_nota == 1)
+                <button class="btn btn-warning btn-flat" onclick="notaKecil('{{ route('reques.nota_kecil') }}', 'Nota Kecil')">Cetak Ulang Nota</button>
                 @else
-                <!-- button cetak nota besar -->
-                <button class="btn btn-warning btn-flat" onclick="notaBesar('{{ route('transaksi.nota_besar') }}', 'Nota PDF')">Cetak Ulang Nota</button>
-                @endif
-                <a href="{{ route('transaksi.baru') }}" class="btn btn-primary btn-flat">Transaksi Baru</a>
+                <button class="btn btn-warning btn-flat" onclick="notaBesar('{{ route('reques.nota_besar') }}', 'Nota PDF')">Cetak Ulang Nota</button>
+                @endif-->
+                <a href="{{ route('reques.baru') }}" class="btn btn-primary btn-flat">Request Baru</a>
             </div>
         </div>
     </div>

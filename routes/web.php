@@ -14,6 +14,8 @@ use App\Http\Controllers\{
     SettingController,
     SupplierController,
     UserController,
+    RequesController,
+    RequesDetailController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +70,24 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/penjualan', [PenjualanController::class, 'index'])->name('penjualan.index');
         Route::get('/penjualan/{id}', [PenjualanController::class, 'show'])->name('penjualan.show');
         Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
+        
+        Route::get('/Reques/data', [RequesController::class, 'data'])->name('penjualan.data');
+        Route::get('/Reques', [PRequesController::class, 'index'])->name('penjualan.index');
+        Route::get('/Reques/{id}', [RequesController::class, 'show'])->name('penjualan.show');
+        Route::delete('/Reques/{id}', [RequesController::class, 'destroy'])->name('penjualan.destroy');
+    });
+
+    Route::group(['middleware' => 'level:1,2'], function () {
+        Route::get('/permintaan/baru', [RequesController::class, 'create'])->name('permintaan.baru');
+        Route::post('/permintaan/simpan', [RequesController::class, 'store'])->name('permintaan.simpan');
+        Route::get('/permintaan/selesai', [RequesController::class, 'selesai'])->name('permintaan.selesai');
+        Route::get('/permintaan/nota-kecil', [RequesController::class, 'notaKecil'])->name('permintaan.nota_kecil');
+        Route::get('/permintaan/nota-besar', [RequesController::class, 'notaBesar'])->name('permintaan.nota_besar');
+
+        Route::get('/permintaan/{id}/data', [RequesDetailController::class, 'data'])->name('permintaan.data');
+        Route::get('/permintaan/loadform/{diskon}/{total}/{diterima}', [RequesDetailController::class, 'loadForm'])->name('permintaan.load_form');
+        Route::resource('/permintaan', RequesDetailController::class)
+            ->except('create', 'show', 'edit');
     });
 
     Route::group(['middleware' => 'level:1,2'], function () {
