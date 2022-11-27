@@ -20,7 +20,7 @@
                     <thead>
                         <th width="5%">No</th>
                         <th>Tanggal</th>
-                        <th>Total Item</th>
+                        <th>Total Barang</th>
                         <th>Petugas</th>
                         <th>Status Pengiriman</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
@@ -89,7 +89,7 @@
 
         $.get(url)
             .done((response) => {
-                $('#modal-form [status]').val(response.status);
+                $('#modal-form [name=status]').val(response.status);
             })
             .fail((errors) => {
                 alert('Tidak dapat menampilkan data');
