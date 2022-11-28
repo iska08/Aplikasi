@@ -149,7 +149,10 @@ class RequesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reques = Reques::find($id);
+        $reques->update($request->all());
+
+        return response()->json('Data berhasil disimpan', 200);
     }
 
     /**
