@@ -27,11 +27,6 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('pengeluaran.index') }}">
-                    <i class="fa fa-money"></i> <span>Pemasukan</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('pembelian.index') }}">
                     <i class="fa fa-download"></i> <span>Isi Stok</span>
                 </a>
@@ -55,6 +50,11 @@
             <li>
                 <a href="{{ route('transaksi.baru') }}">
                     <i class="fa fa-cart-arrow-down"></i> <span>Request Barang</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('pengeluaran.index') }}">
+                    <i class="fa fa-money"></i> <span>Pemasukan</span>
                 </a>
             </li>
             @endif
