@@ -20,7 +20,7 @@ class SettingTableSeeder extends Seeder
             'alamat' => 'Malang',
             'telepon' => '1234567890',
             'tipe_nota' => 1,
-            'diskon' => 5,
+            'diskon' => 0,
             'path_logo' => '/img/logo.png',
             'path_kartu_member' => '/img/member.png',
         ]);

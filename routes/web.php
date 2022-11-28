@@ -71,10 +71,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/penjualan/{id}', [PenjualanController::class, 'show'])->name('penjualan.show');
         Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
         
-        Route::get('/Reques/data', [RequesController::class, 'data'])->name('penjualan.data');
-        Route::get('/Reques', [PRequesController::class, 'index'])->name('penjualan.index');
-        Route::get('/Reques/{id}', [RequesController::class, 'show'])->name('penjualan.show');
-        Route::delete('/Reques/{id}', [RequesController::class, 'destroy'])->name('penjualan.destroy');
+        Route::get('/Reques/data', [RequesController::class, 'data'])->name('reques.data');
+        Route::get('/Reques', [RequesController::class, 'index'])->name('reques.index');
+        Route::get('/Reques/{id}', [RequesController::class, 'show'])->name('reques.show');
+        Route::delete('/Reques/{id}', [RequesController::class, 'destroy'])->name('reques.destroy');
     });
 
     Route::group(['middleware' => 'level:1,2'], function () {

@@ -28,7 +28,7 @@
             </li>
             <li>
                 <a href="{{ route('pengeluaran.index') }}">
-                    <i class="fa fa-money"></i> <span>Pengeluaran Non Bahan</span>
+                    <i class="fa fa-money"></i> <span>Pemasukan</span>
                 </a>
             </li>
             <li>
@@ -43,7 +43,7 @@
             </li>
             <li>
                 <a href="{{ route('laporan.index') }}">
-                    <i class="fa fa-history"></i> <span>Riwayat Transaksi</span>
+                    <i class="fa fa-file-pdf-o"></i> <span>Laporan Pendapatan</span>
                 </a>
             </li>
             <li>

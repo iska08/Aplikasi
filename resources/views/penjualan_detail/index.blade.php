@@ -33,7 +33,9 @@
 
 @section('breadcrumb')
     @parent
-    <li class="active">Transaksi Penjaualan</li>
+    <ul>
+        <li class="active">Transaksi Penjualan</li>
+    </ul>
 @endsection
 
 @section('content')
