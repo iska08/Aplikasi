@@ -27,13 +27,18 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('pengeluaran.index') }}">
+                    <i class="fa fa-money"></i> <span>Pemasukan</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('pembelian.index') }}">
                     <i class="fa fa-download"></i> <span>Isi Stok</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('penjualan.index') }}">
-                    <i class="fa fa-download"></i> <span>Daftar Permintaan</span>
+                <a href="{{ route('reques.index') }}">
+                    <i class="fa fa-id-card"></i> <span>Daftar Permintaan</span>
                 </a>
             </li>
             <li>
@@ -46,15 +51,35 @@
                     <i class="fa fa-users"></i> <span>Admin Cabang</span>
                 </a>
             </li>
-            @else
             <li>
-                <a href="{{ route('transaksi.baru') }}">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Request Barang</span>
+                <a href="{{ route('transaksi.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('pengeluaran.index') }}">
-                    <i class="fa fa-money"></i> <span>Pemasukan</span>
+                <a href="{{ route('transaksi.baru') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('penjualan.index') }}">
+                    <i class="fa fa-upload"></i> <span>Daftar Penjualan</span>
+                </a>
+            </li>
+            @else
+            <li>
+                <a href="{{ route('transaksi.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('transaksi.baru') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('permintaan.baru') }}">
+                    <i class="fa fa-comments-o"></i> <span>Request Barang</span>
                 </a>
             </li>
             @endif

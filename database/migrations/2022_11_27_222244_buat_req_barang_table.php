@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class BuatPenjualanTable extends Migration
+class BuatReqBarangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class BuatPenjualanTable extends Migration
      */
     public function up()
     {
-        Schema::create('penjualan', function (Blueprint $table) {
-            $table->increments('id_penjualan');
+        Schema::create('reques', function (Blueprint $table) {
+            $table->increments('id_reques');
             $table->integer('id_member');
             $table->integer('total_item');
             $table->integer('total_harga');
@@ -22,6 +22,7 @@ class BuatPenjualanTable extends Migration
             $table->integer('bayar')->default(0);
             $table->integer('diterima')->default(0);
             $table->integer('id_user');
+            $table->String('status')->default('Barang Belum Dikirim');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class BuatPenjualanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penjualan');
+        Schema::dropIfExists('reques');
     }
 }

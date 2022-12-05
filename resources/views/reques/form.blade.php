@@ -15,8 +15,8 @@
                         <label for="status" class="col-lg-2 col-lg-offset-1 control-label">Status Pengiriman</label>
                         <div class="col-lg-6">
                             <select name="status" id="status" class="form-control" required>
-                                <option value="1">Barang Belum Dikirim</option>
-                                <option value="2">Barang Telah Dikirim</option>
+                                <option>Barang Belum Dikirim</option>
+                                <option>Barang Telah Dikirim</option>
                             </select>
                             <span class="help-block with-errors"></span>
                         </div>
