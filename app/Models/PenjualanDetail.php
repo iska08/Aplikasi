@@ -13,8 +13,8 @@ class PenjualanDetail extends Model
     protected $primaryKey = 'id_penjualan_detail';
     protected $guarded = [];
 
-    public function produk()
+    public function menu()
     {
-        return $this->hasOne(Produk::class, 'id_produk', 'id_produk');
+        return $this->hasOne(Menu::class, 'id_menu', 'id_menu');
     }
 }

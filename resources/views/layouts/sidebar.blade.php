@@ -5,20 +5,30 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li>
+            <!--<li>
                 <a href="{{ route('dashboard') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
-            </li>
+            </li>-->
             @if (auth()->user()->level == 1)
             <li>
                 <a href="{{ route('kategori.index') }}">
-                    <i class="fa fa-cube"></i> <span>Kategori</span>
+                    <i class="fa fa-cube"></i> <span>Kategori Produk</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('produk.index') }}">
                     <i class="fa fa-cubes"></i> <span>Produk</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('jenis.index') }}">
+                    <i class="fa fa-list"></i> <span>Jenis Menu</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('menu.index') }}">
+                    <i class="fa fa-birthday-cake"></i> <span>Daftar Menu</span>
                 </a>
             </li>
             <li>

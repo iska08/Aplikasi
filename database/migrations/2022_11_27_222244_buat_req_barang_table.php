@@ -15,7 +15,7 @@ class BuatReqBarangTable extends Migration
     {
         Schema::create('reques', function (Blueprint $table) {
             $table->increments('id_reques');
-            $table->integer('id_member');
+            $table->integer('id_member')->nullable()->default(0);
             $table->integer('total_item');
             $table->integer('total_harga');
             $table->tinyInteger('diskon')->default(0);

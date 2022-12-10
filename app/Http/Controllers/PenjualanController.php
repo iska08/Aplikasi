@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Penjualan;
 use App\Models\PenjualanDetail;
-use App\Models\Produk;
+use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use PDF;
@@ -89,9 +89,8 @@ class PenjualanController extends Controller
             $item->diskon = $request->diskon;
             $item->update();
 
-            $produk = Produk::find($item->id_produk);
-            $produk->stok -= $item->jumlah;
-            $produk->update();
+            $menu = Menu::find($item->id_menu);
+            $menu->update();
         }
 
         return redirect()->route('transaksi.selesai');
@@ -99,27 +98,24 @@ class PenjualanController extends Controller
 
     public function show($id)
     {
-        $detail = PenjualanDetail::with('produk')->where('id_penjualan', $id)->get();
+        $detail = PenjualanDetail::with('menu')->where('id_penjualan', $id)->get();
 
         return datatables()
             ->of($detail)
             ->addIndexColumn()
-            ->addColumn('kode_produk', function ($detail) {
-                return '<span class="label label-success">'. $detail->produk->kode_produk .'</span>';
+            ->addColumn('kode_menu', function ($detail) {
+                return '<span class="label label-success">'. $detail->menu->kode_menu .'</span>';
             })
-            ->addColumn('nama_produk', function ($detail) {
-                return $detail->produk->nama_produk;
+            ->addColumn('nama_menu', function ($detail) {
+                return $detail->menu->nama_menu;
             })
             ->addColumn('harga_jual', function ($detail) {
                 return 'Rp. '. format_uang($detail->harga_jual);
             })
-            ->addColumn('jumlah', function ($detail) {
-                return format_uang($detail->jumlah);
-            })
             ->addColumn('subtotal', function ($detail) {
                 return 'Rp. '. format_uang($detail->subtotal);
             })
-            ->rawColumns(['kode_produk'])
+            ->rawColumns(['kode_menu'])
             ->make(true);
     }
 
@@ -128,10 +124,9 @@ class PenjualanController extends Controller
         $penjualan = Penjualan::find($id);
         $detail    = PenjualanDetail::where('id_penjualan', $penjualan->id_penjualan)->get();
         foreach ($detail as $item) {
-            $produk = Produk::find($item->id_produk);
-            if ($produk) {
-                $produk->stok += $item->jumlah;
-                $produk->update();
+            $menu = Menu::find($item->id_menu);
+            if ($menu) {
+                $menu->update();
             }
 
             $item->delete();
@@ -156,7 +151,7 @@ class PenjualanController extends Controller
         if (! $penjualan) {
             abort(404);
         }
-        $detail = PenjualanDetail::with('produk')
+        $detail = PenjualanDetail::with('menu')
             ->where('id_penjualan', session('id_penjualan'))
             ->get();
         
@@ -170,7 +165,7 @@ class PenjualanController extends Controller
         if (! $penjualan) {
             abort(404);
         }
-        $detail = PenjualanDetail::with('produk')
+        $detail = PenjualanDetail::with('menu')
             ->where('id_penjualan', session('id_penjualan'))
             ->get();
 

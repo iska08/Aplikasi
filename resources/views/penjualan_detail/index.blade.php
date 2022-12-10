@@ -42,19 +42,18 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="box">
-            <div class="box-body">
-                    
-                <form class="form-produk">
+            <div class="box-body">                    
+                <form class="form-menu">
                     @csrf
                     <div class="form-group row">
-                        <label for="kode_produk" class="col-lg-2">Kode Produk</label>
+                        <label for="kode_menu" class="col-lg-2">Kode Menu</label>
                         <div class="col-lg-5">
                             <div class="input-group">
                                 <input type="hidden" name="id_penjualan" id="id_penjualan" value="{{ $id_penjualan }}">
-                                <input type="hidden" name="id_produk" id="id_produk">
-                                <input type="text" class="form-control" name="kode_produk" id="kode_produk">
+                                <input type="hidden" name="id_menu" id="id_menu">
+                                <input type="text" class="form-control" name="kode_menu" id="kode_menu">
                                 <span class="input-group-btn">
-                                    <button onclick="tampilProduk()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
+                                    <button onclick="tampilMenu()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -94,7 +93,7 @@
                                     <input type="text" id="totalrp" class="form-control" readonly>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" hidden>
                                 <label for="kode_member" class="col-lg-2 control-label">Member</label>
                                 <div class="col-lg-8">
                                     <div class="input-group">
@@ -143,7 +142,7 @@
     </div>
 </div>
 
-@includeIf('penjualan_detail.produk')
+@includeIf('penjualan_detail.menu')
 @includeIf('penjualan_detail.member')
 @endsection
 
@@ -164,8 +163,8 @@
             },
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
-                {data: 'kode_produk'},
-                {data: 'nama_produk'},
+                {data: 'kode_menu'},
+                {data: 'nama_menu'},
                 {data: 'harga_jual'},
                 {data: 'jumlah'},
                 {data: 'diskon'},
@@ -182,7 +181,7 @@
                 $('#diterima').trigger('input');
             }, 300);
         });
-        table2 = $('.table-produk').DataTable();
+        table2 = $('.table-menu').DataTable();
 
         $(document).on('input', '.quantity', function () {
             let id = $(this).data('id');
@@ -238,25 +237,25 @@
         });
     });
 
-    function tampilProduk() {
-        $('#modal-produk').modal('show');
+    function tampilMenu() {
+        $('#modal-menu').modal('show');
     }
 
-    function hideProduk() {
-        $('#modal-produk').modal('hide');
+    function hideMenu() {
+        $('#modal-menu').modal('hide');
     }
 
-    function pilihProduk(id, kode) {
-        $('#id_produk').val(id);
-        $('#kode_produk').val(kode);
-        hideProduk();
-        tambahProduk();
+    function pilihMenu(id, kode) {
+        $('#id_menu').val(id);
+        $('#kode_menu').val(kode);
+        hideMenu();
+        tambahMenu();
     }
 
-    function tambahProduk() {
-        $.post('{{ route('transaksi.store') }}', $('.form-produk').serialize())
+    function tambahMenu() {
+        $.post('{{ route('transaksi.store') }}', $('.form-menu').serialize())
             .done(response => {
-                $('#kode_produk').focus();
+                $('#kode_menu').focus();
                 table.ajax.reload(() => loadForm($('#diskon').val()));
             })
             .fail(errors => {

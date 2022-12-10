@@ -77,7 +77,6 @@
                             <input type="hidden" name="id_reques" value="{{ $id_reques }}">
                             <input type="hidden" name="total" id="total">
                             <input type="hidden" name="total_item" id="total_item">
-                            <input type="hidden" name="id_member" id="id_member" value="{{ $memberSelected->id_member }}">
 
                             <div class="form-group row" hidden>
                                 <label for="totalrp" class="col-lg-2 control-label">Total</label>

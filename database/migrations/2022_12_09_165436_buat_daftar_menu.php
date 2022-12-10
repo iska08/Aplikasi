@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class BuatPenjualanDetailTable extends Migration
+class BuatDaftarMenu extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class BuatPenjualanDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('penjualan_detail', function (Blueprint $table) {
-            $table->increments('id_penjualan_detail');
-            $table->integer('id_penjualan');
-            $table->integer('id_menu');
+        Schema::create('menu', function (Blueprint $table) {
+            $table->increments('id_menu');
+            $table->unsignedInteger('id_jenis');
+            $table->string('nama_menu')->unique();
             $table->integer('harga_jual');
-            $table->integer('jumlah');
             $table->tinyInteger('diskon')->default(0);
-            $table->integer('subtotal');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class BuatPenjualanDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penjualan_detail');
+        Schema::dropIfExists('menu');
     }
 }
