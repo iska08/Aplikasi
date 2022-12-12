@@ -7,7 +7,9 @@
 
 @section('breadcrumb')
     @parent
-    <li class="active">Daftar Penjualan</li>
+    <ul>
+        <li class="active">Daftar Penjualan</li>
+    </ul>
 @endsection
 
 @section('content')
@@ -69,8 +71,8 @@
             dom: 'Brt',
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
-                {data: 'kode_produk'},
-                {data: 'nama_produk'},
+                {data: 'kode_menu'},
+                {data: 'nama_menu'},
                 {data: 'harga_jual'},
                 {data: 'jumlah'},
                 {data: 'subtotal'},
