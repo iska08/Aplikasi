@@ -13,7 +13,7 @@ class PenjualanDetailController extends Controller
 {
     public function index()
     {
-        $menu = Menu::orderBy('nama_menu')->get();
+        $produk = Menu::orderBy('nama_menu')->get();
         $member = Member::orderBy('nama')->get();
         $diskon = Setting::first()->diskon ?? 0;
 
@@ -22,7 +22,7 @@ class PenjualanDetailController extends Controller
             $penjualan = Penjualan::find($id_penjualan);
             $memberSelected = $penjualan->member ?? new Member();
 
-            return view('penjualan_detail.index', compact('menu', 'member', 'diskon', 'id_penjualan', 'penjualan', 'memberSelected'));
+            return view('penjualan_detail.index', compact('produk', 'member', 'diskon', 'id_penjualan', 'penjualan', 'memberSelected'));
         } else {
             if (auth()->user()->level == 1) {
                 return redirect()->route('transaksi.baru');
@@ -79,18 +79,18 @@ class PenjualanDetailController extends Controller
 
     public function store(Request $request)
     {
-        $menu = Menu::where('id_menu', $request->id_menu)->first();
-        if (! $menu) {
+        $produk = Menu::where('id_menu', $request->id_menu)->first();
+        if (! $produk) {
             return response()->json('Data gagal disimpan', 400);
         }
 
         $detail = new PenjualanDetail();
         $detail->id_penjualan = $request->id_penjualan;
-        $detail->id_menu = $menu->id_menu;
-        $detail->harga_jual = $menu->harga_jual;
-        $detail->jumlah;
-        $detail->diskon = $menu->diskon;
-        $detail->subtotal = $menu->harga_jual - ($menu->diskon / 100 * $menu->harga_jual);
+        $detail->id_menu = $produk->id_menu;
+        $detail->harga_jual = $produk->harga_jual;
+        $detail->jumlah = 1;
+        $detail->diskon = $produk->diskon;
+        $detail->subtotal = $produk->harga_jual - ($produk->diskon / 100 * $produk->harga_jual);
         $detail->save();
 
         return response()->json('Data berhasil disimpan', 200);

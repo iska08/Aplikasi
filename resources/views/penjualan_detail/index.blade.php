@@ -11,16 +11,13 @@
         text-align: center;
         height: 100px;
     }
-
     .tampil-terbilang {
         padding: 10px;
         background: #f0f0f0;
     }
-
     .table-penjualan tbody tr:last-child {
         display: none;
     }
-
     @media(max-width: 768px) {
         .tampil-bayar {
             font-size: 3em;
@@ -34,7 +31,7 @@
 @section('breadcrumb')
     @parent
     <ul>
-        <li class="active">Transaksi Penjualan</li>
+        <li class="active">Transaksi Penjaualn</li>
     </ul>
 @endsection
 
@@ -42,8 +39,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="box">
-            <div class="box-body">                    
-                <form class="form-menu">
+            <div class="box-body">
+                    
+                <form class="form-produk">
                     @csrf
                     <div class="form-group row">
                         <label for="kode_menu" class="col-lg-2">Kode Menu</label>
@@ -53,7 +51,7 @@
                                 <input type="hidden" name="id_menu" id="id_menu">
                                 <input type="text" class="form-control" name="kode_menu" id="kode_menu">
                                 <span class="input-group-btn">
-                                    <button onclick="tampilMenu()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
+                                    <button onclick="tampilProduk()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -75,7 +73,7 @@
 
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="tampil-bayar bg-primary" style="background-color:#979797"></div>
+                        <div class="tampil-bayar bg-primary"></div>
                         <div class="tampil-terbilang"></div>
                     </div>
                     <div class="col-lg-4">
@@ -93,7 +91,7 @@
                                     <input type="text" id="totalrp" class="form-control" readonly>
                                 </div>
                             </div>
-                            <div class="form-group row" hidden>
+                            <div class="form-group row">
                                 <label for="kode_member" class="col-lg-2 control-label">Member</label>
                                 <div class="col-lg-8">
                                     <div class="input-group">
@@ -149,10 +147,8 @@
 @push('scripts')
 <script>
     let table, table2;
-
     $(function () {
         $('body').addClass('sidebar-collapse');
-
         table = $('.table-penjualan').DataTable({
             responsive: true,
             processing: true,
@@ -181,12 +177,10 @@
                 $('#diterima').trigger('input');
             }, 300);
         });
-        table2 = $('.table-menu').DataTable();
-
+        table2 = $('.table-produk').DataTable();
         $(document).on('input', '.quantity', function () {
             let id = $(this).data('id');
             let jumlah = parseInt($(this).val());
-
             if (jumlah < 1) {
                 $(this).val(1);
                 alert('Jumlah tidak boleh kurang dari 1');
@@ -197,7 +191,6 @@
                 alert('Jumlah tidak boleh lebih dari 10000');
                 return;
             }
-
             $.post(`{{ url('/transaksi') }}/${id}`, {
                     '_token': $('[name=csrf-token]').attr('content'),
                     '_method': 'put',
@@ -213,47 +206,38 @@
                     return;
                 });
         });
-
         $(document).on('input', '#diskon', function () {
             if ($(this).val() == "") {
                 $(this).val(0).select();
             }
-
             loadForm($(this).val());
         });
-
         $('#diterima').on('input', function () {
             if ($(this).val() == "") {
                 $(this).val(0).select();
             }
-
             loadForm($('#diskon').val(), $(this).val());
         }).focus(function () {
             $(this).select();
         });
-
         $('.btn-simpan').on('click', function () {
             $('.form-penjualan').submit();
         });
     });
-
-    function tampilMenu() {
-        $('#modal-menu').modal('show');
+    function tampilProduk() {
+        $('#modal-produk').modal('show');
     }
-
-    function hideMenu() {
-        $('#modal-menu').modal('hide');
+    function hideProduk() {
+        $('#modal-produk').modal('hide');
     }
-
-    function pilihMenu(id, kode) {
+    function pilihProduk(id, kode) {
         $('#id_menu').val(id);
         $('#kode_menu').val(kode);
-        hideMenu();
-        tambahMenu();
+        hideProduk();
+        tambahProduk();
     }
-
-    function tambahMenu() {
-        $.post('{{ route('transaksi.store') }}', $('.form-menu').serialize())
+    function tambahProduk() {
+        $.post('{{ route('transaksi.store') }}', $('.form-produk').serialize())
             .done(response => {
                 $('#kode_menu').focus();
                 table.ajax.reload(() => loadForm($('#diskon').val()));
@@ -263,11 +247,9 @@
                 return;
             });
     }
-
     function tampilMember() {
         $('#modal-member').modal('show');
     }
-
     function pilihMember(id, kode) {
         $('#id_member').val(id);
         $('#kode_member').val(kode);
@@ -276,11 +258,9 @@
         $('#diterima').val(0).focus().select();
         hideMember();
     }
-
     function hideMember() {
         $('#modal-member').modal('hide');
     }
-
     function deleteData(url) {
         if (confirm('Yakin ingin menghapus data terpilih?')) {
             $.post(url, {
@@ -296,11 +276,9 @@
                 });
         }
     }
-
     function loadForm(diskon = 0, diterima = 0) {
         $('#total').val($('.total').text());
         $('#total_item').val($('.total_item').text());
-
         $.get(`{{ url('/transaksi/loadform') }}/${diskon}/${$('.total').text()}/${diterima}`)
             .done(response => {
                 $('#totalrp').val('Rp. '+ response.totalrp);
@@ -308,7 +286,6 @@
                 $('#bayar').val(response.bayar);
                 $('.tampil-bayar').text('Bayar: Rp. '+ response.bayarrp);
                 $('.tampil-terbilang').text(response.terbilang);
-
                 $('#kembali').val('Rp.'+ response.kembalirp);
                 if ($('#diterima').val() != 0) {
                     $('.tampil-bayar').text('Kembali: Rp. '+ response.kembalirp);

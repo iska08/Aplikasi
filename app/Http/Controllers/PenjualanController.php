@@ -89,8 +89,8 @@ class PenjualanController extends Controller
             $item->diskon = $request->diskon;
             $item->update();
 
-            $menu = Menu::find($item->id_menu);
-            $menu->update();
+            $produk = Menu::find($item->id_menu);
+            $produk->update();
         }
 
         return redirect()->route('transaksi.selesai');
@@ -112,6 +112,9 @@ class PenjualanController extends Controller
             ->addColumn('harga_jual', function ($detail) {
                 return 'Rp. '. format_uang($detail->harga_jual);
             })
+            ->addColumn('jumlah', function ($detail) {
+                return format_uang($detail->jumlah);
+            })
             ->addColumn('subtotal', function ($detail) {
                 return 'Rp. '. format_uang($detail->subtotal);
             })
@@ -124,9 +127,9 @@ class PenjualanController extends Controller
         $penjualan = Penjualan::find($id);
         $detail    = PenjualanDetail::where('id_penjualan', $penjualan->id_penjualan)->get();
         foreach ($detail as $item) {
-            $menu = Menu::find($item->id_menu);
-            if ($menu) {
-                $menu->update();
+            $produk = Menu::find($item->id_menu);
+            if ($produk) {
+                $produk->update();
             }
 
             $item->delete();

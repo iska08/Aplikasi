@@ -38,15 +38,15 @@ class LaporanController extends Controller
             $total_pembelian = Pembelian::where('created_at', 'LIKE', "%$tanggal%")->sum('bayar');
             $total_pengeluaran = Pengeluaran::where('created_at', 'LIKE', "%$tanggal%")->sum('nominal');
 
-            $pendapatan = $total_pengeluaran - $total_pembelian;
+            $pendapatan = $total_penjualan - $total_pembelian - $total_pengeluaran;
             $total_pendapatan += $pendapatan;
 
             $row = array();
             $row['DT_RowIndex'] = $no++;
             $row['tanggal'] = tanggal_indonesia($tanggal, false);
-            $row['pengeluaran'] = format_uang($total_pengeluaran);
-            $row['pembelian'] = format_uang($total_pembelian);
             $row['penjualan'] = format_uang($total_penjualan);
+            $row['pembelian'] = format_uang($total_pembelian);
+            $row['pengeluaran'] = format_uang($total_pengeluaran);
             $row['pendapatan'] = format_uang($pendapatan);
 
             $data[] = $row;
@@ -55,9 +55,9 @@ class LaporanController extends Controller
         $data[] = [
             'DT_RowIndex' => '',
             'tanggal' => '',
-            'pengeluaran' => '',
-            'pembelian' => 'Total Pendapatan',
             'penjualan' => '',
+            'pembelian' => 'Total Keuntungan',
+            'pengeluaran' => '',
             'pendapatan' => format_uang($total_pendapatan),
         ];
 

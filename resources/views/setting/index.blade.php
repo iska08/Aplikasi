@@ -6,7 +6,9 @@
 
 @section('breadcrumb')
     @parent
-    <li class="active">Pengaturan</li>
+    <ul>
+        <li class="active">Pengaturan</li>
+    </ul>
 @endsection
 
 @section('content')
@@ -21,7 +23,7 @@
                         <i class="icon fa fa-check"></i> Perubahan berhasil disimpan
                     </div>
                     <div class="form-group row">
-                        <label for="nama_perusahaan" class="col-lg-2 control-label">Nama Perusahaan</label>
+                        <label for="nama_perusahaan" class="col-lg-2 control-label">Nama Perusahaan/Usaha</label>
                         <div class="col-lg-6">
                             <input type="text" name="nama_perusahaan" class="form-control" id="nama_perusahaan" required autofocus>
                             <span class="help-block with-errors"></span>
@@ -42,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="path_logo" class="col-lg-2 control-label">Logo Perusahaan</label>
+                        <label for="path_logo" class="col-lg-2 control-label">Logo Perusahaan/Usaha</label>
                         <div class="col-lg-4">
                             <input type="file" name="path_logo" class="form-control" id="path_logo"
                                 onchange="preview('.tampil-logo', this.files[0])">
@@ -51,7 +53,7 @@
                             <div class="tampil-logo"></div>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" hidden>
                         <label for="path_kartu_member" class="col-lg-2 control-label">Kartu Member</label>
                         <div class="col-lg-4">
                             <input type="file" name="path_kartu_member" class="form-control" id="path_kartu_member"
@@ -68,7 +70,7 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" hidden>
                         <label for="tipe_nota" class="col-lg-2 control-label">Tipe Nota</label>
                         <div class="col-lg-2">
                             <select name="tipe_nota" class="form-control" id="tipe_nota" required>

@@ -45,7 +45,6 @@
 <script src="{{ asset('/AdminLTE-2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script>
     let table;
-
     $(function () {
         table = $('.table').DataTable({
             responsive: true,
@@ -58,7 +57,7 @@
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
                 {data: 'tanggal'},
-                {data: 'pengeluaran'},
+                {data: 'penjualan'},
                 {data: 'pembelian'},
                 {data: 'pendapatan'}
             ],
@@ -66,13 +65,11 @@
             bSort: false,
             bPaginate: false,
         });
-
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true
         });
     });
-
     function updatePeriode() {
         $('#modal-form').modal('show');
     }
