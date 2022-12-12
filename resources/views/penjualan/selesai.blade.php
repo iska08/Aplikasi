@@ -7,7 +7,9 @@
 
 @section('breadcrumb')
     @parent
-    <li class="active">Transaksi Penjualan</li>
+    <ul>
+        <li class="active">Transaksi Penjualan</li>
+    </ul>
 @endsection
 
 @section('content')
@@ -22,13 +24,6 @@
                 </div>
             </div>
             <div class="box-footer">
-                @if ($setting->tipe_nota == 1)
-                <!-- button cetak nota kecil -->
-                <button class="btn btn-warning btn-flat" onclick="notaKecil('{{ route('transaksi.nota_kecil') }}', 'Nota Kecil')">Cetak Ulang Nota</button>
-                @else
-                <!-- button cetak nota besar -->
-                <button class="btn btn-warning btn-flat" onclick="notaBesar('{{ route('transaksi.nota_besar') }}', 'Nota PDF')">Cetak Ulang Nota</button>
-                @endif
                 <a href="{{ route('transaksi.baru') }}" class="btn btn-primary btn-flat">Transaksi Baru</a>
             </div>
         </div>

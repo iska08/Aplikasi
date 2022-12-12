@@ -91,7 +91,7 @@
                                     <input type="text" id="totalrp" class="form-control" readonly>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" hidden>
                                 <label for="kode_member" class="col-lg-2 control-label">Member</label>
                                 <div class="col-lg-8">
                                     <div class="input-group">
