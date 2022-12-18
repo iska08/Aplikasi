@@ -13,6 +13,7 @@
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Harga Jual</th>
+                        <th>Diskon</th>
                         <th><i class="fa fa-cog"></i></th>
                     </thead>
                     <tbody>
@@ -22,6 +23,7 @@
                                 <td><span class="label label-success">{{ $item->kode_menu }}</span></td>
                                 <td>{{ $item->nama_menu }}</td>
                                 <td>{{ $item->harga_jual }}</td>
+                                <td>{{ $item->diskon }}%</td>
                                 <td>
                                     <a href="#" class="btn btn-primary btn-xs btn-flat"
                                         onclick="pilihProduk('{{ $item->id_menu }}', '{{ $item->kode_menu }}')">

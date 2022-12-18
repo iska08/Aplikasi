@@ -24,9 +24,8 @@
                         <th>Tanggal</th>
                         <th>Total Item</th>
                         <th>Total Harga</th>
-                        <th>Diskon</th>
                         <th>Total Bayar</th>
-                        <th>Kasir</th>
+                        <th>Petugas</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -56,7 +55,6 @@
                 {data: 'tanggal'},
                 {data: 'total_item'},
                 {data: 'total_harga'},
-                {data: 'diskon'},
                 {data: 'bayar'},
                 {data: 'kasir'},
                 {data: 'aksi', searchable: false, sortable: false},
