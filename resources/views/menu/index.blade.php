@@ -34,6 +34,7 @@
                             <th>Nama Menu</th>
                             <th>Kategori Menu</th>
                             <th>Harga Jual</th>
+                            <th>Diskon</th>
                             <th width="15%"><i class="fa fa-cog"></i></th>
                         </thead>
                     </table>
@@ -66,6 +67,7 @@
                 {data: 'nama_menu'},
                 {data: 'nama_jenis'},
                 {data: 'harga_jual'},
+                {data: 'diskon'},
                 {data: 'aksi', searchable: false, sortable: false},
             ]
         });
